@@ -1,0 +1,14 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #121212;
+  background-image: url('https://tse3.mm.bing.net/th?id=OIP.LFlIGADL4SrEVBh-EjCGGgHaEK&rs=1&pid=ImgDetMain.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.text-muted{
+  color: white;
+}

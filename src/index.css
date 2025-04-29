@@ -1,0 +1,123 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-image: url('https://tse3.mm.bing.net/th?id=OIP.LFlIGADL4SrEVBh-EjCGGgHaEK&rs=1&pid=ImgDetMain.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.content {
+  text-align: center;
+  padding-top: 5%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  min-height: 300px; /* Ensure it takes up space */
+}
+
+
+.about-section {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.about-section h2 {
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  max-width: 800px;
+  margin: auto;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #ccc;
+  margin-top: 0;
+}
+
+.social-icons a {
+  color: #ccc;
+  margin: 0 10px;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: white;
+}
+
+.back-to-top {
+  display: inline-block;
+  margin-top: 20px;
+  color: #ff6600;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-to-top:hover {
+  text-decoration: underline;
+}
+
+.contact-info {
+  margin-top: 15px;
+  font-size: 13px;
+}
+.dropdown-item{
+  color: white;
+  }
+.dropdown-menu{
+  background-color: black;
+}
+.formcontent {
+  margin-bottom: 0; /* or reduce if it's too big */
+  padding-bottom: 20px;
+}
+.form-container {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.form-control,
+.form-select {
+  background-color: #2a2a2a;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+.form-control::placeholder {
+  color: #bbb;
+}
+
+.rating-stars i {
+  font-size: 1.5rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.rating-stars i.active {
+  color: gold;
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #ccc;
+  margin-top: 50px;
+}
+  
+
+

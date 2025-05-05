@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 const Organiser = () => {
   const navigate = useNavigate();
@@ -34,7 +36,10 @@ const Organiser = () => {
                 <div className="card-body">
                   <h5 className="card-title">Event {event}</h5>
                   <p className="card-text">Coming Soon...</p>
-                  <button className="btn btn-primary">View Event</button>
+                  
+                  <Link to={`/myevent/${event}`} className="btn btn-dark">
+                    View Event
+                  </Link>
                 </div>
               </div>
             </div>

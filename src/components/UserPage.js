@@ -117,7 +117,9 @@ const UserPage = () => {
               <div className="card-body text-center">
                 <h5 className="card-title">Event 1</h5>
                 <p className="card-text text-muted">Coming Soon...</p>
-                <a className="btn btn-dark" disabled>View Event</a>
+                <Link to={`/userevent/${1}`} className="btn btn-dark">
+                    View Event
+                </Link>
               </div>
             </div>
   
@@ -126,7 +128,9 @@ const UserPage = () => {
               <div className="card-body text-center">
                 <h5 className="card-title">Event 2</h5>
                 <p className="card-text text-muted">Coming Soon...</p>
-                <a className="btn btn-dark" disabled>View Event</a>
+                <Link to={`/userevent/${2}`} className="btn btn-dark">
+                    View Event
+                </Link>
               </div>
             </div>
   
@@ -135,7 +139,9 @@ const UserPage = () => {
               <div className="card-body text-center">
                 <h5 className="card-title">Event 3</h5>
                 <p className="card-text text-muted">Coming Soon...</p>
-                <a className="btn btn-dark" disabled>View Event</a>
+                <Link to={`/userevent/${3}`} className="btn btn-dark">
+                    View Event
+                </Link>
               </div>
             </div>
   
@@ -144,7 +150,9 @@ const UserPage = () => {
               <div className="card-body text-center">
                 <h5 className="card-title">Event 4</h5>
                 <p className="card-text text-muted">Coming Soon...</p>
-                <a className="btn btn-dark" disabled>View Event</a>
+                <Link to={`/userevent/${4}`} className="btn btn-dark">
+                    View Event
+                </Link>
               </div>
             </div>
           </div>

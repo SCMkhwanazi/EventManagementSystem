@@ -25,18 +25,18 @@ const localizer = dateFnsLocalizer({
 const events = [
   {
     title: 'Hackathon A',
-    start: new Date(2025, 3, 25, 10, 0),/*(year, monthIndex, day, hours, minutes, seconds)*/
-    end: new Date(2025, 3, 25, 18, 0),
+    start: new Date(2025, 4, 20, 10, 0),/*(year, monthIndex, day, hours, minutes, seconds)*/
+    end: new Date(2025, 4, 20, 18, 0),
   },
   {
     title: 'Hackathon B',
-    start: new Date(2025, 3, 28, 9, 0),
-    end: new Date(2025, 3, 28, 17, 0),
+    start: new Date(2025, 4, 25, 9, 0),
+    end: new Date(2025, 4, 25, 17, 0),
   },
   {
     title: 'Hackathon C',
-    start: new Date(2025, 3, 1, 12, 0),
-    end: new Date(2025, 3, 1, 10, 0),
+    start: new Date(2025, 4, 28, 12, 0),
+    end: new Date(2025, 4, 28, 10, 0),
   },
 ];
 
@@ -53,7 +53,7 @@ const Calendar = () => {
       {/* Page Header */}
       <div className="container mt-4">
         <h1 className="mb-3 text-light"><i className="bi bi-calendar-event-fill"></i> Calendar</h1>
-        <p className="text-muted">See all upcoming hackathons in a single view.</p>
+        <p className="mb-3 text-light">See all upcoming hackathons in a single view.</p>
 
         {/* Real Calendar */}
         <div className="bg-light p-3 rounded mb-5" style={{ height: '400px' }}>

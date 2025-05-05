@@ -1,0 +1,13 @@
+.rating-stars i {
+    font-size: 1.7rem;
+    color: #ccc;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .rating-stars i:hover,
+  .rating-stars i:hover ~ i,
+  .rating-stars i.active {
+    color: gold;
+  }
+  

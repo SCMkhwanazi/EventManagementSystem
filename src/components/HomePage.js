@@ -47,9 +47,9 @@ const Home = () => {
           <ul className="dropdown-menu">
             <li><Link className="dropdown-item" to="/secondnotification">Notifications</Link></li>
             <li><Link className="dropdown-item" to="/calendar">Calendar</Link></li>
-            <li><Link className="dropdown-item" to="/insights">Insights</Link></li>
+            <li><Link className="dropdown-item" to="/review">Reviews</Link></li>
             <li><hr className="dropdown-divider" /></li>
-            <li><Link className="dropdown-item" to="/feedback">Feedback & Review</Link></li>
+            
           </ul>
         </li>
       </ul>
@@ -119,7 +119,9 @@ const Home = () => {
             <div className="card-body text-center">
               <h5 className="card-title">Event 1</h5>
               <p className="card-text text-muted">Coming Soon...</p>
-              <a className="btn btn-dark" disabled>View Event</a>
+              <Link to={`/event/${1}`} className="btn btn-dark">
+                  View Event
+              </Link>
             </div>
           </div>
 
@@ -128,7 +130,9 @@ const Home = () => {
             <div className="card-body text-center">
               <h5 className="card-title">Event 2</h5>
               <p className="card-text text-muted">Coming Soon...</p>
-              <a className="btn btn-dark" disabled>View Event</a>
+              <Link to={`/event/${2}`} className="btn btn-dark">
+                  View Event
+              </Link>
             </div>
           </div>
 
@@ -137,7 +141,9 @@ const Home = () => {
             <div className="card-body text-center">
               <h5 className="card-title">Event 3</h5>
               <p className="card-text text-muted">Coming Soon...</p>
-              <a className="btn btn-dark" disabled>View Event</a>
+              <Link to={`/event/${3}`} className="btn btn-dark">
+                  View Event
+              </Link>
             </div>
           </div>
 
@@ -146,7 +152,9 @@ const Home = () => {
             <div className="card-body text-center">
               <h5 className="card-title">Event 4</h5>
               <p className="card-text text-muted">Coming Soon...</p>
-              <a className="btn btn-dark" disabled>View Event</a>
+              <Link to={`/event/${4}`} className="btn btn-dark">
+                  View Event
+              </Link>
             </div>
           </div>
         </div>

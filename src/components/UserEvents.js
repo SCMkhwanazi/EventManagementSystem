@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
@@ -17,7 +18,7 @@ const UserEvents = () => {
       <div className="container text-center pt-5">
         {/* Button Group */}
         <div className="btn-group mb-5" role="group" aria-label="Basic example">
-          <button type="button" className="btn btn-dark" onClick={() => navigate('/organiser')}>
+          <button type="button" className="btn btn-dark" >
             My Events
           </button>
         </div>
@@ -31,11 +32,16 @@ const UserEvents = () => {
                 <div className="card-body">
                   <h5 className="card-title">Event {event}</h5>
                   <p className="card-text">Coming Soon...</p>
-                  <button className="btn btn-primary">View Event</button>
+                  <Link to={`/myuserevents/${event}`} className="btn btn-dark">
+                    View Event
+                </Link>
                 </div>
               </div>
+              
             </div>
           ))}
+          
+
         </div>
       </div>
 

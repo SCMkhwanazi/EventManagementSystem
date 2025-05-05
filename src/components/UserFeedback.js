@@ -1,113 +1,114 @@
 import React, { useState } from 'react';
+import './EventReview.css';
 import { useNavigate } from 'react-router-dom';
-import './Feedback.css'; // Assuming you put your custom CSS in Feedback.css
 
-const UserFeedback = () => {
-    const navigate = useNavigate();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [feedback, setFeedback] = useState('');
+const EventReview = ({ eventName }) => {
+  const navigate = useNavigate();
+  const [reviewTitle, setReviewTitle] = useState('');
   const [rating, setRating] = useState(0);
+  const [pros, setPros] = useState('');
+  const [cons, setCons] = useState('');
+  const [reviewText, setReviewText] = useState('');
+  const [image, setImage] = useState(null);
 
-  const handleStarClick = (value) => {
-    setRating(value);
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here, e.g., send data to backend
-    console.log('Feedback submitted:', { name, email, feedback, rating });
+    // Submit logic here
+    console.log({
+      eventName,
+      reviewTitle,
+      rating,
+      pros,
+      cons,
+      reviewText,
+      image,
+    });
+    alert("Thank you for your review!");
   };
 
   return (
+    
     <div className="container mt-5">
-        {/* Back Button */}
-      <button className="btn btn-dark mb-3 ms-3 mt-3 text-white" onClick={() => navigate('/UserPage')}>
-        <i className="bi bi-arrow-left me-2"></i> Back To Home Page
+      <button className="btn btn-dark text-white mb-3 ms-3 mt-3" onClick={() => navigate('/UserPage')}>
+        <i className="bi bi-arrow-left"></i> Back To Home Page
       </button>
-      <h1 className="mb-4">
-        <i className="bi bi-chat-square-dots"></i> Feedback & Review
-      </h1>
-      <p>We value your input! Let us know what you think of HackTrack.</p>
+      <h2 className="mb-3">Review for: <strong>{eventName}</strong></h2>
+      <form onSubmit={handleSubmit}>
 
-      <div className="form-container mt-4">
-        <form onSubmit={handleSubmit}>
-
-          {/* Name and Email */}
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label">Your Name </label>
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="John Doe"
-            />
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email Address (optional)</label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
-            />
-          </div>
-
-          {/* Star Rating */}
-          <div className="mb-3">
-            <label className="form-label">Rate Us</label>
-            <div className="rating-stars" id="ratingStars">
-              {[1, 2, 3, 4, 5].map((value) => (
-                <i
-                  key={value}
-                  className={`bi bi-star ${rating >= value ? 'active' : ''}`}
-                  onClick={() => handleStarClick(value)}
-                ></i>
-              ))}
-            </div>
-            <input type="hidden" name="rating" value={rating} />
-          </div>
-
-          {/* Feedback Text */}
-          <div className="mb-3">
-            <label htmlFor="feedback" className="form-label">Your Feedback</label>
-            <textarea
-              className="form-control"
-              id="feedback"
-              value={feedback}
-              onChange={(e) => setFeedback(e.target.value)}
-              rows="4"
-              required
-              placeholder="Share your thoughts..."
-            />
-          </div>
-
-          <button type="submit" className="btn btn-outline-success">Submit Feedback</button>
-        </form>
-      </div>
-
-      {/* Footer */}
-      <footer>
-        <div className="social-icons mb-2">
-          <a href="facebook.com" className="text-light me-3"><i className="bi bi-facebook"></i></a>
-          <a href="twitter.com" className="text-light me-3"><i className="bi bi-twitter"></i></a>
-          <a href="linkedin.com" className="text-light"><i className="bi bi-linkedin"></i></a>
+        <div className="mb-3">
+          <label htmlFor="reviewTitle" className="form-label">Review Title</label>
+          <input
+            type="text"
+            className="form-control"
+            id="reviewTitle"
+            value={reviewTitle}
+            onChange={(e) => setReviewTitle(e.target.value)}
+            required
+            placeholder="Amazing event, well organized!"
+          />
         </div>
-        <a href="#top" className="text-info d-block mb-2">Back to Top ↑</a>
-        <div className="contact-info text-light">
-          📧 support@hacktrack.com | ☎ +27 (71) 376-6731
+
+        <div className="mb-3">
+          <label className="form-label">Your Rating</label>
+          <div className="rating-stars">
+            {[1, 2, 3, 4, 5].map((value) => (
+              <i
+                key={value}
+                className={`bi bi-star${rating >= value ? '-fill' : ''}`}
+                onClick={() => setRating(value)}
+              ></i>
+            ))}
+          </div>
         </div>
-        <div style={{ marginTop: '15px' }}>
-          &copy; 2025 HackTrack. All rights reserved.
+
+        <div className="mb-3">
+          <label htmlFor="pros" className="form-label">Pros</label>
+          <input
+            type="text"
+            className="form-control"
+            id="pros"
+            value={pros}
+            onChange={(e) => setPros(e.target.value)}
+            placeholder="Great speakers, organized sessions..."
+          />
         </div>
-      </footer>
+
+        <div className="mb-3">
+          <label htmlFor="cons" className="form-label">Cons</label>
+          <input
+            type="text"
+            className="form-control"
+            id="cons"
+            value={cons}
+            onChange={(e) => setCons(e.target.value)}
+            placeholder="Venue was hard to find, etc."
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="reviewText" className="form-label">Detailed Review</label>
+          <textarea
+            className="form-control"
+            id="reviewText"
+            value={reviewText}
+            onChange={(e) => setReviewText(e.target.value)}
+            rows="4"
+            required
+            placeholder="Share your full experience at the event..."
+          />
+        </div>
+
+        
+
+        <button type="submit" className="btn btn-success">Submit Review</button>
+      </form>
     </div>
   );
 };
 
-export default UserFeedback;
+export default EventReview;

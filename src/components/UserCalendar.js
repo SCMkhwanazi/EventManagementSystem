@@ -25,18 +25,18 @@ const localizer = dateFnsLocalizer({
 const events = [
   {
     title: 'Hackathon A',
-    start: new Date(2025, 3, 25, 10, 0),/*(year, monthIndex, day, hours, minutes, seconds)*/
-    end: new Date(2025, 3, 25, 18, 0),
+    start: new Date(2025, 4, 25, 10, 0),/*(year, monthIndex, day, hours, minutes, seconds)*/
+    end: new Date(2025, 4, 25, 18, 0),
   },
   {
     title: 'Hackathon B',
-    start: new Date(2025, 3, 28, 9, 0),
-    end: new Date(2025, 3, 28, 17, 0),
+    start: new Date(2025, 4, 28, 9, 0),
+    end: new Date(2025, 4, 28, 17, 0),
   },
   {
     title: 'Hackathon C',
-    start: new Date(2025, 3, 1, 12, 0),
-    end: new Date(2025, 3, 1, 10, 0),
+    start: new Date(2025, 4, 1, 12, 0),
+    end: new Date(2025, 4, 1, 10, 0),
   },
 ];
 

@@ -1,0 +1,40 @@
+.form-theme {
+  background-color: #1a1a1a;
+  color: white;
+  max-width: 650px;
+  backdrop-filter: blur(5px);
+  border: 1px solid #00ff88;
+}
+
+/* Form labels */
+.form-theme .form-label {
+  color: #00ff88;
+}
+
+/* Input and textarea styling */
+.form-theme .form-control {
+  background-color: #121212;
+  color: white;
+  border: 1px solid #00ff88;
+}
+
+.form-theme .form-control::placeholder {
+  color: #aaa;
+}
+
+.form-theme .form-control:focus {
+  border-color: #00ff88;
+  box-shadow: 0 0 0 0.2rem rgba(0, 255, 136, 0.25);
+}
+
+/* Submit button */
+.form-theme button {
+  background-color: #00ff88;
+  color: black;
+  border: none;
+}
+
+.form-theme button:hover {
+  background-color: #00cc66;
+  color: white;
+}

@@ -32,15 +32,15 @@ const EventReview = ({ eventName }) => {
   };
 
   return (
-    
-    <div className="container mt-5">
+    <div style={{ backgroundColor: '#121212', minHeight: '100vh', paddingBottom: '100px' }}>
+      <div className="container ">
       <button className="btn btn-dark text-white mb-3 ms-3 mt-3" onClick={() => navigate('/UserPage')}>
-        <i className="bi bi-arrow-left"></i> Back To Home Page
+        <i className="bi bi-arrow-left btn btn-outline-success"></i> Back To Home Page
       </button>
-      <h2 className="mb-3">Review for: <strong>{eventName}</strong></h2>
-      <form onSubmit={handleSubmit}>
-
-        <div className="mb-3">
+      
+      <form onSubmit={handleSubmit} className="mx-auto p-4 rounded shadow form-theme">
+        <h2 className="text-center mb-3">Review<strong>{eventName}</strong></h2>
+        <div className="mb-2">
           <label htmlFor="reviewTitle" className="form-label">Review Title</label>
           <input
             type="text"
@@ -53,7 +53,7 @@ const EventReview = ({ eventName }) => {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-2">
           <label className="form-label">Your Rating</label>
           <div className="rating-stars">
             {[1, 2, 3, 4, 5].map((value) => (
@@ -66,7 +66,7 @@ const EventReview = ({ eventName }) => {
           </div>
         </div>
 
-        <div className="mb-3">
+        <div className="mb-2">
           <label htmlFor="pros" className="form-label">Pros</label>
           <input
             type="text"
@@ -78,7 +78,7 @@ const EventReview = ({ eventName }) => {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-2">
           <label htmlFor="cons" className="form-label">Cons</label>
           <input
             type="text"
@@ -90,7 +90,7 @@ const EventReview = ({ eventName }) => {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-2">
           <label htmlFor="reviewText" className="form-label">Detailed Review</label>
           <textarea
             className="form-control"
@@ -105,8 +105,9 @@ const EventReview = ({ eventName }) => {
 
         
 
-        <button type="submit" className="btn btn-success">Submit Review</button>
+        <button type="submit" className="btn btn-success  w-100">Submit Review</button>
       </form>
+    </div>
     </div>
   );
 };

@@ -27,7 +27,7 @@ const Notifications = () => {
     <div style={{ backgroundColor: '#121212', color: '#fff', minHeight: '100vh' }}>
         {/* Back Button */}
       <button className="btn btn-dark mb-3 ms-3 mt-3 text-white" onClick={() => navigate('/HomePage')}>
-        <i className="bi bi-arrow-left me-2"></i> Back To Home Page
+        <i className="bi bi-arrow-left btn btn-outline-success "></i> Back To Home Page
       </button>
       {/* Page Header */}
       <div className="container mt-5">

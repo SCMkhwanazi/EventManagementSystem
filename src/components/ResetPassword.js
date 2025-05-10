@@ -29,7 +29,7 @@ const ResetPassword = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary">Send Reset Link</button>
+          <button type="submit" className="btn btn-outline-success w-100">Send Reset Link</button>
         </form>
         <div className="text-center mt-3">
           <a href="/signin" className="text-info">Back to Sign In</a>
@@ -46,7 +46,7 @@ const styles = {
     margin: 0,
     padding: 0,
     height: '100vh',
-    background: `url('https://tse3.mm.bing.net/th?id=OIP.LFlIGADL4SrEVBh-EjCGGgHaEK&rs=1&pid=ImgDetMain.jpg') no-repeat center center fixed`,
+    background: `url('./assets/pexels-jeremy-bishop-1260133-2923591.jpg') no-repeat center center fixed`,
     backgroundSize: 'cover',
     fontFamily: 'Arial, sans-serif',
     display: 'flex',

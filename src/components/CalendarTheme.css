@@ -1,0 +1,57 @@
+/* Calendar background and text */
+.rbc-calendar {
+  background-color: #121212;
+  color: white;
+  border-radius: 8px;
+}
+
+/* Toolbar */
+.rbc-toolbar {
+  background-color: #1e1e1e;
+  color: #00ff88;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.rbc-toolbar button {
+  color: white;
+  background-color: #00aa55;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin: 0 5px;
+}
+
+.rbc-toolbar button:hover {
+  background-color: #008844;
+}
+
+/* Day headers */
+.rbc-header {
+  background-color: #00aa55;
+  color: white;
+  padding: 5px 0;
+}
+
+/* Time slots and cells */
+.rbc-timeslot-group,
+.rbc-day-bg {
+  border-color:#2c2c2c;
+}
+
+.rbc-event {
+  background-color: #00ff88;
+  color: black;
+  border: none;
+}
+
+/* Today highlight */
+.rbc-today {
+  background-color: #1e1e1e !important;
+}
+
+/* Time gutter (left side with time labels) */
+.rbc-time-gutter {
+  background-color: #1a1a1a;
+  color: #ccc;
+}

@@ -27,7 +27,7 @@ const UserNotifications = () => {
     <div style={{ backgroundColor: '#121212', color: '#fff', minHeight: '100vh' }}>
         {/* Back Button */}
       <button className="btn btn-dark mb-3 ms-3 mt-3 text-white" onClick={() => navigate('/UserPage')}>
-        <i className="bi bi-arrow-left me-2"></i> Back To Home Page
+        <i className="bi bi-arrow-left btn btn-outline-success me-2"></i> Back To Home Page
       </button>
       {/* Page Header */}
       <div className="container mt-5">
@@ -38,7 +38,7 @@ const UserNotifications = () => {
           <div className="notification-card mb-3 p-4 rounded" key={index} style={{ backgroundColor: '#1e1e1e', border: '1px solid #333' }}>
             <h5>{note.title}</h5>
             <p>{note.message}</p>
-            <small className="text-muted">{note.time}</small>
+            <small >{note.time}</small>
           </div>
         ))}
       </div>

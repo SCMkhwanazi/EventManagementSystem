@@ -11,14 +11,14 @@ const UserEvents = () => {
     <div>
       {/* Back Button */}
       <button className="btn btn-dark text-white mb-3 ms-3 mt-3" onClick={() => navigate('/UserPage')}>
-        <i className="bi bi-arrow-left"></i> Back To Home Page
+        <i className="bi bi-arrow-left btn btn-outline-success "></i> Back To Home Page
       </button>
 
       {/* Main Content */}
       <div className="container text-center pt-5">
         {/* Button Group */}
         <div className="btn-group mb-5" role="group" aria-label="Basic example">
-          <button type="button" className="btn btn-dark" >
+          <button type="button" className="btn btn-outline-success" >
             My Events
           </button>
         </div>

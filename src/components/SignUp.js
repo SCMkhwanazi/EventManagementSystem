@@ -64,17 +64,17 @@ const SignUp = () => {
   };
 
   return (
-    <div className="content" style={styles.content}>
-      <h1 className="text-center mb-4">Sign Up</h1>
-      <form onSubmit={handleSubmit} ref={formRef}>
+    <div style={{ backgroundColor: '#121212', minHeight: '100vh', paddingBottom: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <form style={styles.content} onSubmit={handleSubmit} ref={formRef}>
+        <h1 className="text-center ">Sign Up</h1>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Full Name</label>
-          <input type="text" className="form-control" id="name" value={formData.name} onChange={handleChange} required />
+          <input type="text" className="form-control" id="name" placeholder="John Doe"value={formData.name} onChange={handleChange} required />
         </div>
 
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email address</label>
-          <input type="email" className="form-control" id="email" value={formData.email} onChange={handleChange} required />
+          <input type="email" className="form-control" id="email" placeholder="name@example.com" value={formData.email} onChange={handleChange} required />
         </div>
 
         <div className="mb-3 position-relative">
@@ -92,7 +92,7 @@ const SignUp = () => {
           </div>
         </div>
 
-        <button type="submit" className="btn btn-dark">Sign Up</button>
+        <button type="submit" className="btn btn-outline-success w-100">Sign Up</button>
       </form>
 
       {/* Toast */}
@@ -115,10 +115,8 @@ export default SignUp;
 const styles = {
   content: {
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    color: 'white',
-    padding: '40px',
+    padding: '60px',
     maxWidth: '500px',
-    margin: '5% auto',
     borderRadius: '10px',
   },
   icon: {

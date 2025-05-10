@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar as BigCalendar, dateFnsLocalizer } from 'react-big-calendar';
+import './CalendarTheme.css';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
 import startOfWeek from 'date-fns/startOfWeek';
@@ -47,7 +48,7 @@ const Calendar = () => {
     <div style={{ backgroundColor: '#121212', color: 'black', minHeight: '100vh' }}>
       {/* Back Button */}
       <button className="btn btn-dark mb-3 ms-3 mt-3 text-white" onClick={() => navigate('/HomePage')}>
-        <i className="bi bi-arrow-left me-2"></i> Back To Home Page
+        <i className="bi bi-arrow-left btn btn-outline-success me-2"></i> Back To Home Page
       </button>
 
       {/* Page Header */}
@@ -56,7 +57,7 @@ const Calendar = () => {
         <p className="mb-3 text-light">See all upcoming hackathons in a single view.</p>
 
         {/* Real Calendar */}
-        <div className="bg-light p-3 rounded mb-5" style={{ height: '400px' }}>
+        <div className="bg-dark p-3 rounded mb-5" style={{ height: '400px' }}>
           <BigCalendar
             localizer={localizer}
             events={events}

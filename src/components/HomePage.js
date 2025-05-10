@@ -35,17 +35,16 @@ const Home = () => {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <Link className="nav-link active" to="/">Home</Link>
+          <Link className="nav-link active" to="/" style={{ color: 'green' }} >Home</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/organiser">Organiser</Link>
+          <Link className="nav-link" to="/organiser" >Organiser</Link>
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dashboard
           </a>
           <ul className="dropdown-menu">
-            <li><Link className="dropdown-item" to="/secondnotification">Notifications</Link></li>
             <li><Link className="dropdown-item" to="/calendar">Calendar</Link></li>
             <li><Link className="dropdown-item" to="/review">Reviews</Link></li>
             <li><hr className="dropdown-divider" /></li>

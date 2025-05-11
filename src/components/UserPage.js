@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Important for dropdowns
@@ -12,6 +13,11 @@ const UserPage = () => {
       behavior: 'smooth'
     });
   };
+   const [isRegistered, setIsRegistered] = useState(false);
+
+    const handleRegisterClick = () => {
+      setIsRegistered(true);
+    };
 
    return (
       <div>
@@ -117,10 +123,20 @@ const UserPage = () => {
               <div className="card-body text-center">
                 <h5 className="card-title">Event 1</h5>
                 <p className="card-text text-muted">Coming Soon...</p>
-                <Link to={`/userevent/${1}`} className="btn btn-dark">
+                <Link to={`/userevent/${1}`} className="btn btn-dark me-2">
                     View Event
                 </Link>
+                {isRegistered ? (
+                  <button className="btn btn-success" disabled>
+                    Attending
+                  </button>
+                ) : (
+                  <button className="btn btn-outline-dark" onClick={handleRegisterClick}>
+                    Register Now
+                  </button>
+                )}
               </div>
+                
             </div>
   
             <div className="card" style={{ minWidth: '300px' }}>
@@ -128,9 +144,18 @@ const UserPage = () => {
               <div className="card-body text-center">
                 <h5 className="card-title">Event 2</h5>
                 <p className="card-text text-muted">Coming Soon...</p>
-                <Link to={`/userevent/${2}`} className="btn btn-dark">
+                <Link to={`/userevent/${2}`} className="btn btn-dark  me-2">
                     View Event
                 </Link>
+                {isRegistered ? (
+                  <button className="btn btn-success" disabled>
+                    Attending
+                  </button>
+                ) : (
+                  <button className="btn btn-outline-dark" onClick={handleRegisterClick}>
+                    Register Now
+                  </button>
+                )}
               </div>
             </div>
   
@@ -139,9 +164,18 @@ const UserPage = () => {
               <div className="card-body text-center">
                 <h5 className="card-title">Event 3</h5>
                 <p className="card-text text-muted">Coming Soon...</p>
-                <Link to={`/userevent/${3}`} className="btn btn-dark">
+                <Link to={`/userevent/${3}`} className="btn btn-dark  me-2">
                     View Event
                 </Link>
+                {isRegistered ? (
+                  <button className="btn btn-success" disabled>
+                    Attending
+                  </button>
+                ) : (
+                  <button className="btn btn-outline-dark" onClick={handleRegisterClick}>
+                    Register Now
+                  </button>
+                )}
               </div>
             </div>
   
@@ -150,9 +184,18 @@ const UserPage = () => {
               <div className="card-body text-center">
                 <h5 className="card-title">Event 4</h5>
                 <p className="card-text text-muted">Coming Soon...</p>
-                <Link to={`/userevent/${4}`} className="btn btn-dark">
+                <Link to={`/userevent/${4}`} className="btn btn-dark me-2">
                     View Event
                 </Link>
+                {isRegistered ? (
+                  <button className="btn btn-success" disabled>
+                    Attending
+                  </button>
+                ) : (
+                  <button className="btn btn-outline-dark" onClick={handleRegisterClick}>
+                    Register Now
+                  </button>
+                )}
               </div>
             </div>
           </div>

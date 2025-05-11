@@ -22,11 +22,17 @@ const Organiser = () => {
           <button type="button" className="btn btn-outline-success me-2" onClick={() => navigate('/organiser')}>
             My Events
           </button>
-          <button type="button" className="btn btn-outline-success" onClick={() => navigate('/create-event')}>
+          <button type="button" className="btn btn-outline-success me-2" onClick={() => navigate('/create-event')}>
             Create Events
           </button>
+          <button type="button" className="btn btn-outline-success me-2" onClick={() => navigate('/delete-event')}>
+            Delete Event
+          </button>
+          <button type="button" className="btn btn-outline-success" onClick={() => navigate('/edit-event')}>
+            Edit Event
+          </button>
         </div>
-
+          <h1 className="text-center mb-5">My Events</h1>
         {/* Event Cards */}
         <div className="row justify-content-center">
           {[1, 2].map((event, index) => (

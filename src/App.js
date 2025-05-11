@@ -13,6 +13,8 @@ import UserEventDetails from './components/UserEventDetials';
 import MyUserEvents from './components/MyUserEvents';
 import Organiser from './components/Organiser';
 import CreateEvent from './components/CreateEvent';
+import DeleteEvent from './components/DeleteEvent';
+import EditEvent from './components/EditEvent';
 import Calendar from './components/Calendar';
 import UserEvents from './components/UserEvents';
 import UserNotifications from './components/UserNotifications';
@@ -37,6 +39,8 @@ function App() {
         <Route path="/myuserevents/:eventId" element={<MyUserEvents />} />
         <Route path="/organiser" element={<Organiser />} />
         <Route path="/create-event" element={<CreateEvent />} />
+        <Route path="/delete-event" element={<DeleteEvent />} />
+        <Route path="/Edit-event" element={<EditEvent />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/review" element={<Review />} />
         

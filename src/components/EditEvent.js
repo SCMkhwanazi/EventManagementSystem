@@ -4,7 +4,7 @@ import './CreateEvent.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-const CreateEvent = () => {
+const EditEvent = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -30,8 +30,8 @@ const CreateEvent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Do something with formData
-    console.log('Event created:', formData);
-    alert('✅ Event Created!');
+    console.log('Event Edited:', formData);
+    alert('✅ Event Edited!');
     // Reset form
     setFormData({
       eventName: '',
@@ -54,7 +54,7 @@ const CreateEvent = () => {
       <div className="container text-center pt-3">
         <div className="btn-group" role="group" aria-label="Navigation">
           <button className="btn btn-outline-success me-2" onClick={() => navigate('/organiser')}>My Events</button>
-          <button className="btn btn-outline-success me-2 ">Create Events</button>
+          <button className="btn btn-outline-success me-2" onClick={() => navigate('/create-event')}>Create Events</button>
           <button type="button" className="btn btn-outline-success me-2" onClick={() => navigate('/delete-event')}>
             Delete Event
           </button>
@@ -67,7 +67,7 @@ const CreateEvent = () => {
       {/* Form */}
       <div >
       <form onSubmit={handleSubmit} className="mx-auto p-4 rounded shadow form-theme">
-          <h1 className="text-center mb-5">Create Event</h1>
+          <h1 className="text-center mb-5">Fill in to edit an event</h1>
           <div className="mb-3">
             <label htmlFor="eventName" className="form-label">Event Name</label>
             <input
@@ -154,4 +154,4 @@ const CreateEvent = () => {
 
      
 
-export default CreateEvent;
+export default EditEvent;

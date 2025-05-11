@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,6 +6,11 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const UserEvents = () => {
   const navigate = useNavigate();
+  const [isRegistered, setIsRegistered] = useState(false);
+  
+      const handleRegisterClick = () => {
+        setIsRegistered(true);
+      };
 
   return (
     <div>
@@ -32,12 +37,20 @@ const UserEvents = () => {
                 <div className="card-body">
                   <h5 className="card-title">Event {event}</h5>
                   <p className="card-text">Coming Soon...</p>
-                  <Link to={`/myuserevents/${event}`} className="btn btn-dark">
-                    View Event
-                </Link>
+                  <Link to={`/myuserevents/${event}`} className="btn btn-dark me-2 w-100 mb-2">
+                    Event Details
+                  </Link>
+                  {isRegistered ? (
+                  <button className="btn btn-success w-100" disabled>
+                    Attending
+                  </button>
+                ) : (
+                  <button className="btn btn-outline-dark w-100 mb-2" onClick={handleRegisterClick}>
+                    Registered 
+                  </button>
+                )}
                 </div>
               </div>
-              
             </div>
           ))}
           

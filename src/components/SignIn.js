@@ -1,4 +1,5 @@
 import React, {  useState, useRef } from 'react';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Link } from 'react-router-dom';
@@ -15,27 +16,28 @@ const SignIn = () => {
     setShowPassword(prev => !prev);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const email = formRef.current.querySelector('#email').value;
-    const password = formRef.current.querySelector('#password').value;
-    const users = {
-      'admin111@gmail.com': { password: '1234', path: '/homepage' },
-      'user111@gmail.com': { password: '2468', path: '/userpage' },
-    };
-    const user = users[email];
-    if (user && user.password === password) {
-      setShowToast(true);
-      setTimeout(() => {
-        setShowToast(false);
-        navigate(user.path);
-      }, 1000);
-    } else {
-      alert('❌ Invalid email or password');
-    }
+      const email = formRef.current.querySelector('#email').value;
+      const password = formRef.current.querySelector('#password').value;
 
-    
+      try {
+        const res = await axios.post('http://localhost:3001/signin', { email, password });
+
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);
+          if (res.data.isAdmin) {
+            navigate('/homepage');     // Admin route
+          } else {
+            navigate('/userpage');     // Regular user route
+          }
+        }, 1000);
+      } catch (err) {
+        console.error('Sign-in error:', err.response?.data || err.message);
+        alert('❌ Invalid email or password');
+      } 
   };
 
   return (

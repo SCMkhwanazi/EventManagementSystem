@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -40,8 +41,14 @@ const SignUp = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+            const res = await axios.post('http://localhost:3001/signup', formData);
+            alert(res.data.message);
+        } catch (err) {
+            alert('Error signing up.');
+        }
 
     if (formData.password !== formData.confirmPassword) {
       setMatchMessage('❌ Passwords do not match.');
@@ -53,7 +60,7 @@ const SignUp = () => {
 
     setTimeout(() => {
       setFormData({
-        name: '',
+        username: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -61,6 +68,7 @@ const SignUp = () => {
       setMatchMessage('');
       setShowToast(false);
     }, 1500);
+    
   };
 
   return (
@@ -68,8 +76,8 @@ const SignUp = () => {
       <form style={styles.content} onSubmit={handleSubmit} ref={formRef}>
         <h1 className="text-center ">Sign Up</h1>
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">Full Name</label>
-          <input type="text" className="form-control" id="name" placeholder="John Doe"value={formData.name} onChange={handleChange} required />
+          <label htmlFor="username" className="form-label">Full Name</label>
+          <input type="text" className="form-control" id="username" placeholder="John Doe"value={formData.name} onChange={handleChange} required />
         </div>
 
         <div className="mb-3">

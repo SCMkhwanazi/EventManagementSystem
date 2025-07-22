@@ -7,7 +7,18 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const Organiser = () => {
   const navigate = useNavigate();
-
+  const events = [
+    {
+      id: 1,
+      title: 'AI Hackathon',
+      image: 'https://picsum.photos/400/200?random=1',
+    },
+    {
+      id: 2,
+      title: 'TUT Hackathon',
+      image: 'https://picsum.photos/400/200?random=1',
+    },
+    ];
   return (
     <div>
       {/* Back Button */}
@@ -35,19 +46,17 @@ const Organiser = () => {
           <h1 className="text-center mb-5">My Events</h1>
         {/* Event Cards */}
         <div className="row justify-content-center">
-          {[1, 2].map((event, index) => (
-            <div className="col-md-4 mb-5" key={index}>
-              <div className="card">
-                <img src={`https://via.placeholder.com/400x200?text=Event+${event}`} className="card-img-top" alt={`Event ${event}`} />
-                <div className="card-body">
-                  <h5 className="card-title">Event {event}</h5>
-                  <p className="card-text">Coming Soon...</p>
-                  
-                  <Link to={`/myevent/${event}`} className="btn btn-dark">
+          {events.map((event) => (
+            <div className="col-md-4 mb-5">
+            <div className="card" key={event.id} style={{ minWidth: '300px' }}>
+                <img src={event.image} className="card-img-top" alt={event.title} style={{ height: '200px', objectFit: 'cover' }} />
+                <div className="card-body text-center">
+                  <h5 className="card-title">{event.title}</h5>
+                  <Link to={`/myevent/${event.id}`} className="btn btn-dark me-2">
                     View Event
                   </Link>
                 </div>
-              </div>
+            </div>
             </div>
           ))}
         </div>

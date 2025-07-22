@@ -19,7 +19,7 @@ const EventDetail = () => {
   return (
 
     <div className="container mt-5">
-      <button className="btn btn-dark text-white mb-3 ms-3 mt-3" onClick={() => navigate('/organiser')}>
+      <button className="btn btn-dark text-white mb-3 ms-3 mt-3" onClick={() => navigate('/HomePage')}>
         <i className="bi bi-arrow-left"></i> Back To Home Page
       </button>
       <h1>{myevent.title}</h1>

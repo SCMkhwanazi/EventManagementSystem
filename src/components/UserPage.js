@@ -5,19 +5,47 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Important for dropdowns
 
 const UserPage = () => {
-  const scrollCards = (direction) => {
+    const [registeredEvents, setRegisteredEvents] = useState([]);
+    const events = [
+    {
+      id: 1,
+      title: 'AI Hackathon',
+      image: 'https://picsum.photos/400/200?random=1',
+    },
+    {
+      id: 2,
+      title: 'TUT Hackathon',
+      image: 'https://picsum.photos/400/200?random=1',
+    },
+    {
+      id: 3,
+      title: 'UP Hackathon',
+      image: 'https://picsum.photos/400/200?random=1',
+    },
+    {
+      id: 4,
+      title: 'WITS Hackathon',
+      image: 'https://picsum.photos/400/200?random=1',
+    },
+    ];
+   const scrollCards = (direction) => {
     const container = document.getElementById('cardScrollContainer');
     const scrollAmount = 320; // Adjust based on card width + gap
     container.scrollBy({
       left: direction * scrollAmount,
       behavior: 'smooth'
     });
-  };
-   const [isRegistered, setIsRegistered] = useState(false);
-
-    const handleRegisterClick = () => {
-      setIsRegistered(true);
     };
+
+    const handleRegisterClick = (eventId) => {
+      if (!registeredEvents.includes(eventId)) {
+        setRegisteredEvents([...registeredEvents, eventId]);
+      }
+      
+    };
+
+    const isUserRegistered = (eventId) => registeredEvents.includes(eventId);
+
 
    return (
       <div>
@@ -115,98 +143,40 @@ const UserPage = () => {
             <i className="bi bi-chevron-left"></i>
           </button>
   
+          
           {/* Scrollable Card Container */}
-          <div id="cardScrollContainer" className="d-flex overflow-auto gap-3 pb-3 px-5">
-            {/* Event Cards */}
-            <div className="card" style={{ minWidth: '300px' }}>
-              <img src="https://via.placeholder.com/400x200?text=Event+1" className="card-img-top" alt="Event 1" />
-              <div className="card-body text-center">
-                <h5 className="card-title">Event 1</h5>
-                <p className="card-text text-muted">Coming Soon...</p>
-                <Link to={`/userevent/${1}`} className="btn btn-dark me-2">
-                    View Event
-                </Link>
-                {isRegistered ? (
-                  <button className="btn btn-success" disabled>
-                    Attending
-                  </button>
-                ) : (
-                  <button className="btn btn-outline-dark" onClick={handleRegisterClick}>
-                    Register Now
-                  </button>
-                )}
-              </div>
-                
+          <div>
+            <div id="cardScrollContainer" className="d-flex overflow-auto gap-3 pb-3 px-5">
+              {events.map((event) => (
+                <div className="card" key={event.id} style={{ minWidth: '300px' }}>
+                  <img src={event.image} onError={(e) => { e.target.src = 'https://via.placeholder.com/400x200?text=Image+Error'; }} className="card-img-top" alt={event.title} style={{ height: '200px', objectFit: 'cover' }} />
+                  <div className="card-body text-center">
+                    <h5 className="card-title">{event.title}</h5>
+                    <Link to={`/userevent/${event.id}`} className="btn btn-dark me-2">
+                      View Event
+                    </Link>
+                    {isUserRegistered(event.id) ? (
+                      <button className="btn btn-success" disabled>
+                        Attending
+                      </button>
+                    ) : (
+                      <button className="btn btn-outline-dark" onClick={() => handleRegisterClick(event.id)}>
+                        Register Now
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
   
-            <div className="card" style={{ minWidth: '300px' }}>
-              <img src="https://via.placeholder.com/400x200?text=Event+2" className="card-img-top" alt="Event 2" />
-              <div className="card-body text-center">
-                <h5 className="card-title">Event 2</h5>
-                <p className="card-text text-muted">Coming Soon...</p>
-                <Link to={`/userevent/${2}`} className="btn btn-dark  me-2">
-                    View Event
-                </Link>
-                {isRegistered ? (
-                  <button className="btn btn-success" disabled>
-                    Attending
-                  </button>
-                ) : (
-                  <button className="btn btn-outline-dark" onClick={handleRegisterClick}>
-                    Register Now
-                  </button>
-                )}
-              </div>
-            </div>
-  
-            <div className="card" style={{ minWidth: '300px' }}>
-              <img src="https://via.placeholder.com/400x200?text=Event+3" className="card-img-top" alt="Event 3" />
-              <div className="card-body text-center">
-                <h5 className="card-title">Event 3</h5>
-                <p className="card-text text-muted">Coming Soon...</p>
-                <Link to={`/userevent/${3}`} className="btn btn-dark  me-2">
-                    View Event
-                </Link>
-                {isRegistered ? (
-                  <button className="btn btn-success" disabled>
-                    Attending
-                  </button>
-                ) : (
-                  <button className="btn btn-outline-dark" onClick={handleRegisterClick}>
-                    Register Now
-                  </button>
-                )}
-              </div>
-            </div>
-  
-            <div className="card" style={{ minWidth: '300px' }}>
-              <img src="https://via.placeholder.com/400x200?text=Event+4" className="card-img-top" alt="Event 4" />
-              <div className="card-body text-center">
-                <h5 className="card-title">Event 4</h5>
-                <p className="card-text text-muted">Coming Soon...</p>
-                <Link to={`/userevent/${4}`} className="btn btn-dark me-2">
-                    View Event
-                </Link>
-                {isRegistered ? (
-                  <button className="btn btn-success" disabled>
-                    Attending
-                  </button>
-                ) : (
-                  <button className="btn btn-outline-dark" onClick={handleRegisterClick}>
-                    Register Now
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-  
-          {/* Right Arrow */}
-          <button
-            className="btn btn-dark position-absolute top-50 end-0 translate-middle-y z-3"
-            onClick={() => scrollCards(1)}
-          >
+            {/* Right Arrow */}
+            <button
+              className="btn btn-dark position-absolute top-50 end-0 translate-middle-y z-3"
+              onClick={() => scrollCards(1)}
+            >
             <i className="bi bi-chevron-right"></i>
-          </button>
+           </button>
+           </div>
         </div>
   
         {/* Footer */}

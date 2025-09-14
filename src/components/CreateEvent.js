@@ -26,22 +26,43 @@ const CreateEvent = () => {
     setFormData(prev => ({ ...prev, image: file }));
   };
   
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Do something with formData
-    console.log('Event created:', formData);
-    alert('✅ Event Created!');
-    // Reset form
-    setFormData({
-      eventName: '',
-      eventDescription: '',
-      location: '',
-      eventDate: '',
-      eventTime: '',
-      image: null,
-    });
+
+    const data = new FormData();
+    data.append('eventName', formData.eventName);
+    data.append('eventDescription', formData.eventDescription);
+    data.append('location', formData.location);
+    data.append('eventDate', formData.eventDate);
+    data.append('eventTime', formData.eventTime);
+    data.append('image', formData.image);
+
+    try {
+      const response = await fetch('http://localhost:3001/api/events', {
+        method: 'POST',
+        body: data
+      });
+
+      if (response.ok) {
+        alert('✅ Event Created!');
+        setFormData({
+          eventName: '',
+          eventDescription: '',
+          location: '',
+          eventDate: '',
+          eventTime: '',
+          image: null,
+        });
+      } else {
+        alert('❌ Failed to create event');
+      }
+    } catch (error) {
+      console.error('Error uploading:', error);
+      alert('❌ Error uploading event');
+    }
   };
+
+
 
   return (
     <div style={{ backgroundColor: '#121212', minHeight: '100vh', paddingBottom: '60px' }}>
@@ -141,7 +162,6 @@ const CreateEvent = () => {
             />
           </div>
 
-
           <button type="submit" className="btn btn-dark w-100">Create Event</button>
         </form>
       </div>
@@ -149,9 +169,5 @@ const CreateEvent = () => {
   </div>
   );
 };
-
-     
-
-     
 
 export default CreateEvent;

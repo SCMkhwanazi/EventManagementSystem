@@ -3,6 +3,7 @@ const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
+const multer = require('multer');
 
 const app = express();
 const port = 3001;
@@ -65,4 +66,26 @@ app.post('/signin', (req, res) => {
         const isAdmin = user.email === 'admin111@gmail.com';
         res.json({ message: 'Login successful', isAdmin });
     });
+});
+
+// Use multer for handling multipart/form-data
+const storage = multer.memoryStorage(); // Image will be stored in memory as Buffer
+const upload = multer({ storage });
+
+// POST endpoint to receive form data + image
+app.post('/api/events', upload.single('image'), (req, res) => {
+  const { eventName, eventDescription, location, eventDate, eventTime } = req.body;
+  const image = req.file ? req.file.buffer : null;
+
+  const sql = `INSERT INTO events 
+    (eventName, eventDescription, location, eventDate, eventTime, image) 
+    VALUES (?, ?, ?, ?, ?, ?)`;
+
+  db.query(sql, [eventName, eventDescription, location, eventDate, eventTime, image], (err, result) => {
+    if (err) {
+      console.error('DB Error:', err);
+      return res.status(500).send('Database error');
+    }
+    res.send('Event created successfully');
+  });
 });

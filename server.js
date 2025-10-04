@@ -35,10 +35,42 @@ app.post('/signup', async (req, res) => {
         res.send({ message: 'User registered successfully!' });
     });
 });
+app.get('/api/viewevent/:id', (req, res) => {
+  const eventId = req.params.id;
+  const sql = `
+  SELECT id, eventName, eventDescription, eventDate, eventTime, location, image
+  FROM events WHERE id = ?`;
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+  db.query(sql, [eventId], (err, results) => {
+    if (err) {
+      console.error('Error fetching event by ID:', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ error: 'Event not found' });
+    }
+
+    const event = results[0];
+    let imageBase64 = null;
+
+    if (event.image && event.image instanceof Buffer) {
+      imageBase64 = `data:image/jpeg;base64,${event.image.toString('base64')}`;
+    }
+
+    res.json({
+      id: event.id,
+      eventName: event.eventName,
+      eventDescription: event.eventDescription,
+      eventDate: event.eventDate,
+      eventTime: event.eventTime,
+      location: event.location,
+      image: imageBase64,
+    });
+
+  });
 });
+
 //For sign in
 app.use(cors());
 app.use(express.json());
@@ -88,4 +120,38 @@ app.post('/api/events', upload.single('image'), (req, res) => {
     }
     res.send('Event created successfully');
   });
+});
+
+// GET events route
+app.get('/api/events', (req, res) => {
+  const sql = 'SELECT id AS id, eventName AS eventName, image AS image FROM events';
+
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error('Error fetching events:', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    const events = results.map(event => {
+      let imageBase64 = null;
+
+      if (event.image && event.image instanceof Buffer) {
+        // ✅ Convert raw binary buffer to base64 string
+        const base64Image = event.image.toString('base64');
+        imageBase64 = `data:image/jpeg;base64,${base64Image}`;
+      }
+
+      return {
+        id: event.id,
+        eventName: event.eventName,
+        image: imageBase64,
+      };
+    });
+
+    res.json(events);
+  });
+});
+
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
 });

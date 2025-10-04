@@ -1,24 +1,24 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 const Organiser = () => {
   const navigate = useNavigate();
-  const events = [
-    {
-      id: 1,
-      title: 'AI Hackathon',
-      image: 'https://picsum.photos/400/200?random=1',
-    },
-    {
-      id: 2,
-      title: 'TUT Hackathon',
-      image: 'https://picsum.photos/400/200?random=1',
-    },
-    ];
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/api/events') //API endpoint
+      .then(response => {
+        setEvents(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching events:', error);
+      });
+  }, []);
   return (
     <div>
       {/* Back Button */}
@@ -46,41 +46,25 @@ const Organiser = () => {
           <h1 className="text-center mb-5">My Events</h1>
         {/* Event Cards */}
         <div className="row justify-content-center">
-          {events.map((event) => (
-            <div className="col-md-4 mb-5">
-            <div className="card" key={event.id} style={{ minWidth: '300px' }}>
-                <img src={event.image} className="card-img-top" alt={event.title} style={{ height: '200px', objectFit: 'cover' }} />
-                <div className="card-body text-center">
-                  <h5 className="card-title">{event.title}</h5>
-                  <Link to={`/myevent/${event.id}`} className="btn btn-dark me-2">
-                    View Event
-                  </Link>
+          {events.length === 0 ? (
+            <p>No events found.</p>
+          ) : (
+            events.map((event) => (
+              <div className="col-md-4 mb-5" key={event.id}>
+                <div className="card" style={{ minWidth: '300px' }}>
+                  <img src={event.image} className="card-img-top" alt={event.eventName} style={{ height: '200px', objectFit: 'cover' }} />
+                  <div className="card-body text-center">
+                    <h5 className="card-title">{event.eventName}</h5>
+                    <Link to={`/myevent/${event.id}`} className="btn btn-dark me-2">
+                      View Event
+                    </Link>
+                  </div>
                 </div>
-            </div>
-            </div>
-          ))}
+              </div>
+            ))
+          )}
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-dark text-center text-light mt-5 py-4">
-        <div className="social-icons mb-2">
-          <a href="#" title="Facebook" className="text-light me-3"><i className="bi bi-facebook"></i></a>
-          <a href="#" title="Twitter" className="text-light me-3"><i className="bi bi-twitter"></i></a>
-          <a href="#" title="LinkedIn" className="text-light"><i className="bi bi-linkedin"></i></a>
-        </div>
-
-        <a href="#top" className="text-info d-block mb-2">Back to Top ↑</a>
-
-        <div className="contact-info text-light">
-          📧 Email: support@hacktrack.com<br />
-          ☎ Phone: +27 (71) 376-6731
-        </div>
-
-        <div style={{ marginTop: '15px' }}>
-          &copy; 2025 HackTrack. All rights reserved.
-        </div>
-      </footer>
     </div>
   );
 };

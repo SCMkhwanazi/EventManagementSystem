@@ -14,17 +14,17 @@ const Home = () => {
     {
       id: 2,
       title: 'TUT Hackathon',
-      image: 'https://picsum.photos/400/200?random=1',
+      image: 'https://picsum.photos/400/200?random=2',
     },
     {
       id: 3,
       title: 'UP Hackathon',
-      image: 'https://picsum.photos/400/200?random=1',
+      image: 'https://picsum.photos/400/200?random=3',
     },
     {
       id: 4,
       title: 'WITS Hackathon',
-      image: 'https://picsum.photos/400/200?random=1',
+      image: 'https://picsum.photos/400/200?random=4',
     },
     ];
   const scrollCards = (direction) => {
